@@ -1,10 +1,9 @@
 const db = require("../utils/database");
-const Users = require('./users.models')
-
 const { DataTypes } = require("sequelize");
+const Users = require("./users.models");
+const Categories = require("./categories.models");
 
 const Recipes = db.define("recipes", {
-
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
@@ -14,8 +13,8 @@ const Recipes = db.define("recipes", {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-        min: 5
-    }
+      min: 5,
+    },
   },
   description: {
     type: DataTypes.TEXT,
@@ -24,41 +23,41 @@ const Recipes = db.define("recipes", {
   urlImg: {
     type: DataTypes.STRING,
     validate: {
-        isUrl: true
+      isUrl: true,
     },
-    field: 'url_img'
+    field: "url_img",
   },
   time: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
   },
   portions: {
-    type: DataTypes.INTEGER, 
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   userId: {
     type: DataTypes.UUID,
     allowNull: false,
-    field: 'user_id',
+    field: "user_id",
     references: {
-        key: 'id',
-        model: Users
-    }
+      key: "id",
+      model: Users,
+    },
   },
   categoryId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field: 'category_id',
+    field: "category_id",
     references: {
-        key: 'id',
-        model: '' //Category  TODO agregar el modelo una vez creado
-    }
+      key: "id",
+      model: Categories, //Category  TODO agregar el modelo una vez creado
+    },
   },
   origin: {
     type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: 0
-  }
+    defaultValue: 0,
+  },
 });
 
-module.exports = Recipes
+module.exports = Recipes;
