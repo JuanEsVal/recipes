@@ -2,8 +2,7 @@ const { DataTypes } = require("sequelize");
 const db = require("../utils/database");
 const Types = require("./types.models");
 
-const ingredients = db.define(
-  "ingredients",
+const ingredients = db.define("ingredients",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -33,6 +32,7 @@ const ingredients = db.define(
     },
   },
   {
+    //? Evita que sequelize cree la columna de createdAt y updatedAt
     timestamps: false,
   }
 );
