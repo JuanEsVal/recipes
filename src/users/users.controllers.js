@@ -23,6 +23,7 @@ const getUserById = async (id) => {
     return data
 }
 
+
 const createUser = async (data) => {
     const newUser = await Users.create({
         id: uuid.v4(),

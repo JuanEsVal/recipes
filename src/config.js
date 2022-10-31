@@ -8,9 +8,10 @@ const config = {
     db: {
         host: process.env.DB_HOST || 'localhost',
         username: process.env.DB_USER || 'postgres',
-        password: process.env.DB_PASS || 'root',
-        dbName: process.env.DB_NAME
+        password: process.env.DB_PASS || 'Lolillo713+',
+        dbName: process.env.DB_NAME || 'recipes'
     }
+
 }
 
 module.exports = config

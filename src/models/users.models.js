@@ -23,17 +23,17 @@ const Users = db.define("users", {
     allowNull: false,
     unique: true,
     validate: {
-      isEmail: true,
-    },
+        isEmail: true
+    }
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   phone: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING, // +52 
     allowNull: false,
-    unique: true,
+    unique: true
   },
   birthday: {
     type: DataTypes.DATEONLY,
@@ -45,7 +45,7 @@ const Users = db.define("users", {
   role: {
     type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: "normal",
+    defaultValue: 'normal'
   },
   country: {
     type: DataTypes.STRING,
@@ -53,14 +53,14 @@ const Users = db.define("users", {
   status: {
     type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: "active",
+    defaultValue: 'active'
   },
   isVerified: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
-    field: "is_verified",
-    defaultValue: false,
+    field: 'is_verified',
+    defaultValue: false
   },
 });
 
-module.exports = Users;
+module.exports = Users

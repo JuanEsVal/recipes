@@ -1,25 +1,26 @@
 //? Middleware para proteger rutas
-// Pasos: 
+
 //* 1- Revisar si existe un token
 //* 2- Verificar si el token pertenece a un usuario valido
 //* 3- Modificar el req y agregar req.user con la informacion desencriptada del token
 
 //? estrategia: Diferentes maneras de hacer un login(Con facebook, google, JWT, Github...)
 
-const JwtStrategy = require('passport-jwt').Strategy;       //? JwtStrategy: Passport maneja estrategias para las diferentes autenticaciones:
-const ExtractJwt = require('passport-jwt').ExtractJwt;      //? ExtractJwt: Extrae los header de la peticion de Thunder Client Pej.
-
 const { jwtSecret } = require('../config');
 const { getUserById } = require('../users/users.controllers');
+const JwtStrategy = require('passport-jwt').Strategy; 
+//? Passport maneja estrategias para las diferentes autenticaciones
+const ExtractJwt = require('passport-jwt').ExtractJwt; 
+//? Extrae los header de la peticion
 
 //? Exportando funcion anonima
 module.exports = (passport) => {
-    const options = {   //Lo siguiente trae el Authorization (TOKEN) del header de Thunder Client
+    const options = {
         jwtFromRequest : ExtractJwt.fromAuthHeaderWithScheme('jwt'),
-        secretOrKey: jwtSecret // Esta es la Variable de Entorno del .env JWT_SECRET (...y del config.js)
+        secretOrKey: jwtSecret
     }
     passport.use(
-        new JwtStrategy(options, async(decoded, done) => {  // Dcouded es el TOKEN Decodificado
+        new JwtStrategy(options, async(decoded, done) => {
             //? done(error, decoded)
             try {
                 const response = await getUserById(decoded.id)
@@ -34,3 +35,7 @@ module.exports = (passport) => {
         })
     )
 }
+
+
+
+

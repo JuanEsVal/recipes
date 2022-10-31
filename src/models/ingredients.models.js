@@ -1,40 +1,38 @@
-const { DataTypes } = require("sequelize");
-const db = require("../utils/database");
-const Types = require("./types.models");
+const { DataTypes } = require('sequelize')
 
-const ingredients = db.define("ingredients",
-  {
+const db = require('../utils/database')
+const Types = require('./types.models')
+
+const Ingredients = db.define('ingredients', {
     id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false
     },
     name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
+        type: DataTypes.STRING,
+        allowNull:false,
+        unique: true
+    }, //? holaGrupoComoEstan -> Javascript
+       //? hola_gripo_como_estan -> SQL
     typeId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      field: "type_id",
-      references: {
-        key: id,
-        model: Types,
-      },
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        field: 'type_id',
+        references: {
+            key: 'id',
+            model: Types
+        }
     },
-    urlImg: {
-      type: DataTypes.STRING,
-      field: "img_url",
-      validate: {
-        isUrl: true,
-      },
-    },
-  },
-  {
-    //? Evita que sequelize cree la columna de createdAt y updatedAt
-    timestamps: false,
-  }
-);
+    urlImg : {
+        type: DataTypes.STRING,
+        field: 'url_img',
+        validate: {
+            isUrl: true
+        }
+    }
+}, {
+    timestamps: false
+})
 
-module.exports = ingredients;
+module.exports = Ingredients

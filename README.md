@@ -7,6 +7,7 @@
 - Bcrypt para hashear contraseñas
 - Uso de Json Web Token
 
+---
 
 - Rutas de Login y creación de usuario (register)
 - Herramienta para publicar imagenes de perfil
