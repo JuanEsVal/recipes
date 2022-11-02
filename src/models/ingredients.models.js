@@ -14,7 +14,7 @@ const Ingredients = db.define('ingredients', {
         allowNull:false,
         unique: true
     }, //? holaGrupoComoEstan -> Javascript
-       //? hola_gripo_como_estan -> SQL
+       //? hola_grupo_como_estan -> SQL
     typeId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -28,7 +28,7 @@ const Ingredients = db.define('ingredients', {
         type: DataTypes.STRING,
         field: 'url_img',
         validate: {
-            isUrl: true
+            // isUrl: true
         }
     }
 }, {
