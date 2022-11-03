@@ -49,8 +49,4 @@ router.route('/:id')
         userServices.deleteUser
     )
 
-
-
-
-
 module.exports = router

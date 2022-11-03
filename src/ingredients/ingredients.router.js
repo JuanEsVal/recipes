@@ -33,7 +33,8 @@ router
 
 router.post(
   "/:ingredient_id/add_to_user",
-  passport.authenticate("jwt", { session: false })
+  passport.authenticate("jwt", { session: false }),
+  ingredientServices.postIngredientToUser
 );
 
 module.exports = router;
