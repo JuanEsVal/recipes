@@ -2,6 +2,7 @@ const router = require('express').Router()
 const passport = require('passport')
 const adminValidate = require('../middlewares/role.middleware')
 const userServices = require('./users.services')
+const {getUserRecipes} = require('../recipes/recipes.services')
 
 require('../middlewares/auth.middleware')(passport)
 
@@ -35,6 +36,12 @@ router.route('/me')
         userServices.deleteMyUser
     )
 
+//TODO Agregar la ruta para obtener mis recetas
+router.get('/me/my_recipes', 
+        passport.authenticate('jwt', {session: false}),
+        getUserRecipes
+)
+
 //? /api/v1/users/:id
 router.route('/:id')
     .get(userServices.getUserById)
@@ -48,5 +55,9 @@ router.route('/:id')
         adminValidate,
         userServices.deleteUser
     )
+
+
+
+
 
 module.exports = router
